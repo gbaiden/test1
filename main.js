@@ -1,6 +1,3 @@
-const THREE = window.THREE;
-const OrbitControls = window.THREE.OrbitControls;
-
 let scene, camera, renderer, controls;
 let objects = [];
 let currentIndex = 0;
@@ -14,7 +11,14 @@ function init() {
     renderer.setSize(window.innerWidth, window.innerHeight);
     document.body.appendChild(renderer.domElement);
 
-    controls = new OrbitControls(camera, renderer.domElement);
+    // Check if OrbitControls is available
+    setTimeout(() => {
+        if (window.THREE.OrbitControls) {
+            controls = new THREE.OrbitControls(camera, renderer.domElement);
+        } else {
+            console.warn("OrbitControls not loaded yet.");
+        }
+    }, 1000);
 
     addStars();
     addHeart();
@@ -59,7 +63,7 @@ function addHeart() {
     const geometry = new THREE.SphereGeometry(1000, 32, 32);
     const material = new THREE.MeshBasicMaterial({ color: 0xff0000 });
     const heart = new THREE.Mesh(geometry, material);
-    heart.position.x = objects[objects.length - 1].position.x + 2000;
+    heart.position.x = objects.length > 0 ? objects[objects.length - 1].position.x + 2000 : 2000;
     scene.add(heart);
     objects.push(heart);
 }
@@ -81,7 +85,7 @@ function onWindowResize() {
 
 function animate() {
     requestAnimationFrame(animate);
-    controls.update();
+    if (controls) controls.update();
     renderer.render(scene, camera);
 }
 
