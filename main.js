@@ -1,5 +1,5 @@
- import { OrbitControls } from 'https://cdn.jsdelivr.net/npm/three@0.128/examples/jsm/controls/OrbitControls.js';
- import * as THREE from 'https://cdn.jsdelivr.net/npm/three@0.128/build/three.module.js';
+const THREE = window.THREE;
+const OrbitControls = window.THREE.OrbitControls;
 
 let scene, camera, renderer, controls;
 let objects = [];
