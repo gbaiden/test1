@@ -9,18 +9,11 @@
     </style>
 </head>
 <body>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r136/three.min.js"></script>
-    <script>
-        // Load OrbitControls dynamically
-        fetch('https://cdn.jsdelivr.net/npm/three@0.136/examples/jsm/controls/OrbitControls.js')
-            .then(response => response.text())
-            .then(text => {
-                const script = document.createElement('script');
-                script.type = 'module';
-                script.textContent = text;
-                document.body.appendChild(script);
-            });
-    </script>
-    <script src="main.js" defer></script>
+    <!-- Load Three.js from an official CDN -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/three@0.128/examples/js/controls/OrbitControls.js"></script>
+    
+    <!-- Load main script -->
+    <script src="main.js"></script>
 </body>
 </html>
