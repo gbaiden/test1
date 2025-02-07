@@ -11,14 +11,7 @@ function init() {
     renderer.setSize(window.innerWidth, window.innerHeight);
     document.body.appendChild(renderer.domElement);
 
-    // Check if OrbitControls is available
-    setTimeout(() => {
-        if (window.THREE.OrbitControls) {
-            controls = new THREE.OrbitControls(camera, renderer.domElement);
-        } else {
-            console.warn("OrbitControls not loaded yet.");
-        }
-    }, 1000);
+    controls = new THREE.OrbitControls(camera, renderer.domElement);
 
     addStars();
     addHeart();
@@ -85,7 +78,7 @@ function onWindowResize() {
 
 function animate() {
     requestAnimationFrame(animate);
-    if (controls) controls.update();
+    controls.update();
     renderer.render(scene, camera);
 }
 
